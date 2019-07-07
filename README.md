@@ -1,5 +1,5 @@
 # RFM69_SRF Library
-[![GitHub release](https://img.shields.io/github/release/emmanuelz/RFM69_SRF.svg)](https://github.com/emmanuelz/RFM69_SRF)
+[![GitHub release](https://img.shields.io/github/release/emmanuelz/RFM69_SRF.svg)](https://github.com/emmanuelz/RFM69_SRF/releases)
 [![GitHub issues](https://img.shields.io/github/issues/emmanuelz/RFM69_SRF.svg)](https://github.com/emmanuelz/RFM69_SRF/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/emmanuelz/RFM69_SRF.svg)](https://github.com/emmanuelz/RFM69_SRF/pulls)
 [![license](https://img.shields.io/github/license/emmanuelz/RFM69_SRF.svg)](https://github.com/emmanuelz/RFM69_SRF/blob/master/license.txt)
