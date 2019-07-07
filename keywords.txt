@@ -1,0 +1,23 @@
+# Syntax Coloring Map for RFM69_SRF
+
+# Datatypes (KEYWORD1)
+RFM69Base	KEYWORD1
+RFM69_SRF	KEYWORD1
+
+# Instances (KEYWORD2)
+
+# Methods and Functions (KEYWORD2)
+begin	KEYWORD2
+setFrequencyHz	KEYWORD2
+setChannelSpacingHz	KEYWORD2
+setChannelNumber	KEYWORD2
+setNetworkId	KEYWORD2
+setPacketSize	KEYWORD2
+send	KEYWORD2
+isDataAvailable	KEYWORD2
+getReceivedData	KEYWORD2
+getRSSI	KEYWORD2
+
+# Constants (LITERAL1)
+
+# Variables/Volatiles (LITERAL2)
