@@ -65,6 +65,8 @@ class RFM69Base {
     uint8_t getPowerLevelDBm();
     int8_t getRSSI() const;
     virtual bool isDataAvailable();
+    void readAllRegs();
+    void setCurrentLimit(int8_t currentMA);
     virtual void setDataRateBps(uint32_t dataRateKbps);
     void setEncryptionKey(const char *key);
     void setFrequencyDeviationHz(uint32_t deviationHz);
@@ -72,7 +74,8 @@ class RFM69Base {
     virtual void setPacketSize(uint8_t packetSize);
     void setPowerLevelDBm(int8_t powerDBm);
     void setRxBandwidthHz(uint32_t bandWidthHz);
-    void readAllRegs();
+    void sleep();
+    void wake();
 };
 
 #endif // RFM69BASE_H

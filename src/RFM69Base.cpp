@@ -298,6 +298,7 @@ void RFM69Base::setDefaultSettings() {
 
   // Puissance maximum
   setPowerLevelDBm(13);
+  setCurrentLimit(120);
 }
 
 void RFM69Base::writeReg(uint8_t addr, uint8_t value)
@@ -371,8 +372,19 @@ void RFM69Base::setPowerLevelDBm(int8_t powerDBm) {
   if (powerDBm < -18 || powerDBm > 13) {
     return;
   }
-  uint8_t value = 18 + powerDBm;
-  writeReg(REG_PALEVEL, RF_PALEVEL_PA0_ON | value);
+  uint8_t value = (unsigned) (powerDBm + 18);
+  writeReg(REG_PALEVEL, RF_PALEVEL_PA0_OFF | RF_PALEVEL_PA1_ON | RF_PALEVEL_PA2_OFF | (value & 0x1F));
+}
+
+void RFM69Base::setCurrentLimit(int8_t currentMA) {
+  if (currentMA < 45) {
+    currentMA = 45;
+  } else if (currentMA > 120) {
+    writeReg(REG_OCP, RF_OCP_OFF);
+    return;
+  }
+  currentMA = (currentMA - 45) / 5;
+  writeReg(REG_OCP, RF_OCP_ON | (currentMA & 0xF));
 }
 
 void RFM69Base::setMode(uint8_t newMode) {
@@ -412,6 +424,14 @@ void RFM69Base::setMode(uint8_t newMode) {
   // wait for ModeReady
   while (mode == RF69_MODE_SLEEP && (readReg(REG_IRQFLAGS1) & RF_IRQFLAGS1_MODEREADY) == 0x00) { }
   mode = newMode;
+}
+
+void RFM69Base::sleep() {
+  setMode(RF69_MODE_SLEEP);
+}
+
+void RFM69Base::wake() {
+  isDataAvailable();
 }
 
 int8_t RFM69Base::getRSSI() const {

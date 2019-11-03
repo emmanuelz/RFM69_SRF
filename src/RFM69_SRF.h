@@ -61,7 +61,7 @@ class RFM69_SRF : public RFM69Base {
     void setNetworkId(uint16_t networkId);
     virtual void setPacketSize(uint8_t packetSize);
     void send(const char *data, uint8_t dataLength);
-	void send(String data);
+    void send(String data);
 };
 
 #endif // RFM69_SRF_H
